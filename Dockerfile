@@ -15,7 +15,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends apt-utils \
     && rm -rf /var/lib/apt/lists/*
 
-# Create static gid/uid for puppet 
+# Create static gid/uid for puppet
 # (nice to have to match on host OS filesystem)
 RUN groupadd -r -g 501 puppet && \
       useradd -u 501 -r -g puppet puppet
@@ -49,6 +49,7 @@ EXPOSE 8140
 # Mutable directories
 VOLUME ["/etc/puppet", "/var/lib/puppet","/var/log/apache2"]
 
+RUN chown puppet:puppet /var/log/puppet
 # FIXME:
 # Debug logging can be turned on by editig:
 #     /usr/share/puppet/rack/puppetmasterd/config.ru
