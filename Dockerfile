@@ -49,7 +49,8 @@ EXPOSE 8140
 # Mutable directories
 VOLUME ["/etc/puppet", "/var/lib/puppet","/var/log/apache2"]
 
-RUN chown puppet:puppet /var/log/puppet
+RUN chown puppet:puppet /etc/puppet /var/lib/puppet /var/log/puppet
+ 	
 # FIXME:
 # Debug logging can be turned on by editig:
 #     /usr/share/puppet/rack/puppetmasterd/config.ru
