@@ -41,8 +41,7 @@ RUN apt-get update && \
 RUN gem install hiera-eyaml
 
 # Docker-ception (include Dockerfile used for build in an obvious spot)
-RUN mkdir /root/docker.info
-ADD Dockerfile /root/docker.indo/Dockerfile
+ADD Dockerfile /root/docker.info/Dockerfile
 
 # Puppet port
 EXPOSE 8140
