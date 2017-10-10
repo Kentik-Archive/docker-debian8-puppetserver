@@ -40,6 +40,17 @@ RUN apt-get update && \
 # Add-on eyaml package for encrypted yaml
 RUN gem install hiera-eyaml
 
+# Puppet workaround
+RUN echo "# WORKAROUND: https://ask.puppet.com/question/3241/invalid-byte-sequence-in-us-ascii-when-automating-puppet/" >> /usr/share/puppet/rack/puppetmasterd/config.ru
+RUN echo 'Encoding.default_external = Encoding::UTF_8' >> /usr/share/puppet/rack/puppetmasterd/config.ru
+
+# Basic tools
+RUN apt-get update && \
+    apt-get install  -y \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+
 # Docker-ception (include Dockerfile used for build in an obvious spot)
 ADD Dockerfile /root/docker.info/Dockerfile
 
