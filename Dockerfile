@@ -47,6 +47,16 @@ RUN apt-get update && \
     vim \
     && rm -rf /var/lib/apt/lists/*
 
+################################
+# puppetdb
+RUN apt-get update && \
+    apt-get install  -y \
+        default-jre-headless \
+	&& rm -rf /var/lib/apt/lists/*
+
+RUN wget http://apt.puppetlabs.com/pool/wheezy/PC1/p/puppetdb/puppetdb_2.3.8-1puppetlabs1_all.deb
+RUN dpkg -i puppetdb_2.3.8-1puppetlabs1_all.deb
+
 
 # Docker-ception (include Dockerfile used for build in an obvious spot)
 ADD Dockerfile /root/docker.info/Dockerfile
