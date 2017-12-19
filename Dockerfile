@@ -44,6 +44,7 @@ RUN gem install hiera-eyaml
 RUN apt-get update && \
     apt-get install  -y \
     git \
+    lsof \
     vim \
     wget \
     && rm -rf /var/lib/apt/lists/*
